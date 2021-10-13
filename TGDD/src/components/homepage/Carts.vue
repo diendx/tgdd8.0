@@ -11,18 +11,26 @@
                 :class="{ 'on-hover': hover }"
               >
                 <v-row>
-                  <v-col md="4"
-                    ><v-img :src="product.url" height="100%"></v-img
+                  <v-col md="5" justify="center" align="center"
+                    ><v-img :src="product.image" ></v-img
                   ></v-col>
-                  <v-col md="8">
+                  <v-col md="7">
                     <v-card-title>{{ product.name }}</v-card-title>
-                    <v-card-subtitle>${{ product.price }}</v-card-subtitle>
+                    <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
                     <v-card-actions>
                       <v-btn color="red" @click="removeFromCart(product.id)">
                         <v-icon left>mdi-delete</v-icon>
                         Bỏ Chọn
                       </v-btn>
                     </v-card-actions>
+                    
+                    <div id="example-1">
+                      <button v-on:click="counter -= 1">Add - 1</button><br>
+                      <button v-on:click="counter += 1">Add + 1</button>
+                    </div>
+                    <p> Số tiền phải trả là {{ product.price }} VND</p>
+                    <button> <router-link :to="{name:'confirm', params: {  money: money * counter, id: counter}}"> Xác nhận </router-link> </button>
+
                   </v-col>
                 </v-row>
               </v-card>
@@ -40,7 +48,7 @@
             <v-text-field label="Phone" />
             <v-text-field label="Address" />
 
-            <p style="color: red; font-size: 20px">Total: ${{ total }}</p>
+            <p style="color: red; font-size: 20px">Total: {{ total }} VND</p>
             <v-btn color="primary"> Checkout </v-btn>
           </v-card-text>
         </v-card>

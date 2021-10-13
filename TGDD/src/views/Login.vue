@@ -1,10 +1,18 @@
 <template>
   <section class="section-container">
     <v-row class="signin">
-      <v-col md="8" class="left">
-        <h1>Welcome to thegioididong.com </h1>
+
+      <v-col md="6">
+        <v-card>
+          <v-img
+            src="//cdn.tgdd.vn/Files/2015/08/11/683321/fdsf-800-resize.jpg"
+          ></v-img>
+          <v-img
+            src="//cdn.tgdd.vn/Files/2020/12/22/1315495/thegioididongdienmayxanh_800x450.jpg"
+          ></v-img>
+        </v-card>
       </v-col>
-      <v-col md="4" class="right">
+      <v-col md="6" class="right">
         <h2>LOGIN</h2>
         <ValidationObserver ref="observer">
           <v-form @submit.prevent="submit">
@@ -16,7 +24,7 @@
               <v-text-field
                 v-model="email"
                 :error-messages="errors"
-                label="Email"
+                label="User name"
                 required
                 outlined
                 dark
@@ -99,7 +107,7 @@ export default class Login extends Vue {
  async submit(){
       if(this.email==='admin' && this.password ==='1'){
         console.log("thanh cong");
-        this.$router.push("/");
+        this.$router.push("/cart");
           
       }else{
           console.log("that bai");
@@ -120,7 +128,7 @@ export default class Login extends Vue {
     padding: 0
     max-width: 1200px
     margin: 0 auto
-    min-height: 600px
+    min-height: 400px
     box-shadow: 0 0 1px 1px rgba($color: #000000, $alpha: 0.1)
     .left
         padding: 30px
@@ -139,11 +147,15 @@ export default class Login extends Vue {
     h2
         text-align: center
         margin: 30px 0
+        font-size: 32px
 
     .signin-btn
-        width: 100%
+        width: 30%
         color: #fed100
+        margin: 5% 0
     .mess
         color: red
         margin-top :10px
+  
+  
 </style>

@@ -17,7 +17,7 @@
                   <span>Tên Sản Phẩm: {{ product.name }}</span>
                 </div>
                 <div>
-                  <span>Giá Tiền: ${{ product.price }}</span>
+                  <span>Giá Tiền: {{ product.price }} VND</span>
                 </div>
                 <div>
                   <span>Thông Tin: {{ product.detail }}</span>
@@ -25,9 +25,16 @@
               </v-card-text>
             </v-col>
           </div>
-          <v-card-actions class="justify-end">
+        
+        <div style="  ">
+          <v-card-actions class="justify">
             <v-btn text @click="dialog.value = false">Close</v-btn>
           </v-card-actions>
+
+          <v-card-actions class="justify">
+            <v-btn text @click="dialog.value = false">edit</v-btn>
+          </v-card-actions>
+        </div>
         </v-card>
       </template>
     </v-dialog>
@@ -41,6 +48,7 @@ import { Prop } from "vue-property-decorator";
 export default class ProductDetail extends Vue {
   @Prop() private product?: any[];
 }
+
 </script>
 <style lang="sass" scoped>
 .v-card__text

@@ -28,12 +28,17 @@
               >
                 <v-img :src="product.image" height="256"></v-img>
                 <v-card-title>{{ product.name }}</v-card-title>
-                <v-card-subtitle>${{ product.price }}</v-card-subtitle>
+                <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
                 <v-card-actions>
                   <v-btn outlined @click="addToCart(product.id)">
                     <v-icon left small>fa-plus</v-icon>
                     MUA
                   </v-btn>
+
+                  <v-btn outlined @click="editProduc(product.id)">
+                    Edit
+                  </v-btn>
+                  
                   <ProductDetail :product="product" />
                 </v-card-actions>
               </v-card>
@@ -46,13 +51,14 @@
       <v-col md="4">
         <v-card>
           <v-img
-            src="//cdn.tgdd.vn/2021/06/banner/samsung-390-210-390x210-2.png"
+          
+            src="//cdn.tgdd.vn/2021/06/banner/samsung-390-210-390x210-2.png" 
           ></v-img>
         </v-card>
       </v-col>
       <v-col md="4">
         <v-card>
-          <v-img src="//cdn.tgdd.vn/2021/06/banner/DT-390x210-2.png"></v-img>
+          <v-img src="//cdn.tgdd.vn/2021/06/banner/DT-390x210-2.png" ></v-img>
         </v-card>
       </v-col>
       <v-col md="4">
@@ -66,7 +72,7 @@
         <v-card outlined>
           <v-img :src="product.image" height="256"></v-img>
           <v-card-title>{{ product.name }}</v-card-title>
-          <v-card-subtitle>${{ product.price }}</v-card-subtitle>
+          <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
           <v-card-actions>
             <v-btn outlined @click="addToCart(product.id)">
               <v-icon left small>fa-plus</v-icon>
@@ -107,7 +113,7 @@ export default class Carts extends Vue {
 
   addToCart(id: any) {
     this.$store.dispatch("addToCart", id);
-    alert("Đã thêm vào giỏ hàng");
+    alert("Đã thêm sản phẩm vào giỏ hàng");
   }
 }
 </script>
