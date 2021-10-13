@@ -46,7 +46,7 @@ import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 @Component
 export default class ProductDetail extends Vue {
-  @Prop() private product?: any[];
+  @Prop() private product?: any;
 }
 
 </script>

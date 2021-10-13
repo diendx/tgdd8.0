@@ -25,8 +25,13 @@
                     </v-card-actions>
                     
                     <div id="example-1">
-                      <button v-on:click="counter -= 1">Add - 1</button><br>
-                      <button v-on:click="counter += 1">Add + 1</button>
+                      <v-btn @click="addToCart(product.id)">
+                          +
+                      </v-btn>
+                     {{ count }}
+                      <v-btn @click="removeFromCart(product.id)">
+                          -
+                      </v-btn>
                     </div>
                     <p> Số tiền phải trả là {{ product.price }} VND</p>
                     <button> <router-link :to="{name:'confirm', params: {  money: money * counter, id: counter}}"> Xác nhận </router-link> </button>
@@ -77,13 +82,19 @@ export default class Carts extends Vue {
   get total(): number {
     return this.Cart.reduce((acc, cur) => acc + cur.price, 0);
   }
-  removeFromCart(id: any) {
-    for (let i = 0; i < this.Cart.length; i++) {
-      if (this.Cart[i].id === id) {
-        this.$store.dispatch("removeFromCart", i);
-      }
-    }
+
+  get count(): number {
+    return this.Cart.reduce((acc, cur) => (acc + cur.quantity),0);
   }
+
+  removeFromCart(id: any) {
+        this.$store.dispatch("removeFromCart", id);
+  }
+
+  addToCart(id: any) {
+    this.$store.dispatch("addToCart", id);
+  }
+
 }
 </script>
 <style lang="sass" scoped>

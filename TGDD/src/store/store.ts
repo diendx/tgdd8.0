@@ -19,7 +19,10 @@ export default new Vuex.Store({
     },
     REMOVE_ITEM_CART (state, index) {
       state.inCart.splice(index, 1)
-    }
+    },
+    INC_QUANTITY (state, index) {
+      state.inCart.splice(index, 1)
+    },
   },
   actions: {
      addToCart (context, id) {
@@ -27,6 +30,9 @@ export default new Vuex.Store({
      },
     removeFromCart (context, id) {
       context.commit('REMOVE_ITEM_CART', id)
+    },
+    incQuantity(context, id) {
+      context.commit('INC_QUANTITY', id)
     }
   },
   modules: {}
