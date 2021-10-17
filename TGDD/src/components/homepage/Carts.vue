@@ -28,13 +28,12 @@
                       <v-btn @click="addToCart(product.id)">
                           +
                       </v-btn>
-                     {{ count }}
+                     {{ product.quantity }}
                       <v-btn @click="removeFromCart(product.id)">
                           -
                       </v-btn>
                     </div>
                     <p> Số tiền phải trả là {{ product.price }} VND</p>
-                    <button> <router-link :to="{name:'confirm', params: {  money: money * counter, id: counter}}"> Xác nhận </router-link> </button>
 
                   </v-col>
                 </v-row>
@@ -79,23 +78,42 @@ export default class Carts extends Vue {
     });
   }
 
-  get total(): number {
-    return this.Cart.reduce((acc, cur) => acc + cur.price, 0);
+  created() {
+    console.log(this.inCart);
+    
   }
 
-  get count(): number {
+   get count(): number {
     return this.Cart.reduce((acc, cur) => (acc + cur.quantity),0);
   }
 
+  get total(): number {
+    return this.Cart.reduce((acc, cur) => (acc + cur.price*cur.quantity), 0)
+ }
+
   removeFromCart(id: any) {
-        this.$store.dispatch("removeFromCart", id);
+        for (let i = 0; i < this.Cart.length; i++) {
+          if (this.Cart[i].id === id) {
+            if(this.Cart[i].quantity >= 1) {
+                this.Cart[i].quantity--;
+            } else {
+               this.$store.dispatch("removeToCart", i);
+            }    
+          }
+      }      
   }
 
   addToCart(id: any) {
-    this.$store.dispatch("addToCart", id);
+        for (let i = 0; i < this.Cart.length; i++) {
+          if (this.Cart[i].id === id) {
+                this.Cart[i].quantity++;
+          }  else {
+          this.$store.dispatch("addToCart", i);
+          }
+      }      
+    }
   }
 
-}
 </script>
 <style lang="sass" scoped>
 .v-card__text

@@ -22,7 +22,9 @@
         <v-row>
           <v-col md="6">
             <v-card outlined>
-              <v-img :src="product.url"></v-img>
+              <v-img
+                src="//cdn.tgdd.vn/2021/06/banner/Group3913-340x340.jpg"
+              ></v-img> 
             </v-card>
           </v-col>
           <v-col md="6" padding="" >
@@ -92,9 +94,7 @@ export default class Header extends Vue {
       title: ""
     },
   ];
-  product = {
-    url: "//cdn.tgdd.vn/2021/06/banner/Group3913-340x340.jpg",
-  };
+
 }
 </script>
 <style lang="sass" scoped>
