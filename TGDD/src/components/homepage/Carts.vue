@@ -25,13 +25,17 @@
                     </v-card-actions>
                     
                     <div id="example-1">
-                      <v-btn @click="addToCart(product.id)">
-                          +
-                      </v-btn>
-                     {{ product.quantity }}
-                      <v-btn @click="removeFromCart(product.id)">
+                      <v-btn color="red" @click="removeFromCart(product.id)">
                           -
                       </v-btn>
+                      <v-row>
+                        {{ product.quantity }}
+                      </v-row>
+                      <v-btn @click="addToCart(product.id)">
+                          + 
+                      </v-btn>
+
+                      
                     </div>
                     <p> Số tiền phải trả là {{ product.price }} VND</p>
 

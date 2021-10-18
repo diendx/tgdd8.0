@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col md="8">
-        <v-carousel cycle height="420" width="850">
+        <v-carousel cycle height="435" width="850">
 
           <v-carousel-item
             v-for="(item, i) in items"
@@ -18,16 +18,18 @@
 
         </v-carousel>
       </v-col>
-      <v-col md="4" style="padding: 12px 0px">
+
+      <v-col md="4" style="padding: 12px 0px 12px 12px"> 
+
         <v-row>
-          <v-col md="6">
+          <v-col md="6" style="padding-left: 0px">
             <v-card outlined>
               <v-img
                 src="//cdn.tgdd.vn/2021/06/banner/Group3913-340x340.jpg"
               ></v-img> 
             </v-card>
           </v-col>
-          <v-col md="6" padding="" >
+          <v-col md="6" style="padding-left: 0px" >
             <v-card outlined>
               <v-img
                 src="//cdn.tgdd.vn/2021/06/banner/bannerdt-340x340-2.jpg"
@@ -35,15 +37,16 @@
             </v-card>
           </v-col>
         </v-row>
-        <v-row>
-          <v-col md="6">
+
+        <v-row style="margin-top: 0px">
+          <v-col md="6" style="padding-left: 0px">
             <v-card outlined>
               <v-img
                 src="//cdn.tgdd.vn/2021/06/banner/laptopdesk-340x340.jpg"
               ></v-img>
             </v-card>
           </v-col>
-          <v-col md="6">
+          <v-col md="6" style="padding-left: 0px">
             <v-card outlined>
               <v-img
                 src="//cdn.tgdd.vn/2021/09/banner/Frame39592x-340x340.png"
@@ -51,6 +54,7 @@
             </v-card>
           </v-col>
         </v-row>
+
       </v-col>
     </v-row>
   </v-container>
@@ -106,7 +110,7 @@ export default class Header extends Vue {
   .carousel
   background-size: auto 
   background-repeat: no-repeat
-
+  
 
 
 </style>

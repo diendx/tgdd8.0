@@ -97,8 +97,8 @@ export default class Login extends Vue {
   private message='';
   params() {
     return {
-      email: this.email,
-      password: this.password,
+      'email': this.email,
+      'password': this.password,
     };
   }
   created(){
@@ -106,15 +106,16 @@ export default class Login extends Vue {
   }
  async submit(){
       if(this.email==='admin' && this.password ==='1'){
-        console.log("thanh cong");
-        this.$router.push("/cart");
-          
+        console.log(this.email);
+        // this.$router.push("/");
+        localStorage.setItem("email", this.email);
       }else{
           console.log("that bai");
           this.message="Tài khoản hoặc mật khẩu không đúng"
-
       }
   }
+  
+ 
 }
 </script>
 <style lang="sass">

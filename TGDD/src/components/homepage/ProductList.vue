@@ -21,8 +21,9 @@
                 outlined
                 :elevation="hover ? 16 : 2"
                 :class="{ 'on-hover': hover }"
-                height="410"
+                height="420"
                 width="260"
+                style="padding-top: 10px"
                 class="ma-4"
                 @click="toggle" 
               >
@@ -34,11 +35,9 @@
                     <v-icon left small>fa-plus</v-icon>
                     MUA
                   </v-btn>
-
                   <v-btn outlined @click="editProduc(product.id)">
                     Edit
                   </v-btn>
-                  
                   <ProductDetail :product="product" />
                 </v-card-actions>
               </v-card>
@@ -70,7 +69,7 @@
     <v-row class="mx-auto banner">
       <v-col md="3" v-for="product in product" :key="product.id">
         <v-card outlined>
-          <v-img :src="product.image" height="256"></v-img>
+          <v-img :src="product.image" height="100%" style="padding-top: 10px"></v-img>
           <v-card-title>{{ product.name }}</v-card-title>
           <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
           <v-card-actions>
