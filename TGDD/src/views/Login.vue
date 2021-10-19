@@ -107,7 +107,7 @@ export default class Login extends Vue {
  async submit(){
       if(this.email==='admin' && this.password ==='1'){
         console.log(this.email);
-        // this.$router.push("/");
+        this.$router.push("/"); 
         localStorage.setItem("email", this.email);
       }else{
           console.log("that bai");

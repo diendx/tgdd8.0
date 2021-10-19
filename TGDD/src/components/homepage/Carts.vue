@@ -10,34 +10,31 @@
                 :elevation="hover ? 16 : 2"
                 :class="{ 'on-hover': hover }"
               >
-                <v-row>
+                <v-row style="padding-top: 15px">
                   <v-col md="5" justify="center" align="center"
                     ><v-img :src="product.image" ></v-img
                   ></v-col>
-                  <v-col md="7">
+                  <v-col class="example-0" md="7">
                     <v-card-title>{{ product.name }}</v-card-title>
                     <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
+                    <div class="example-1" justify="space-around" align="center">
+                      <v-btn elevation="2" style="padding-right: 15px" color="red" @click="removeToCart(product.id)">
+                          -
+                      </v-btn>
+                        {{ product.quantity }}
+                      <v-btn elevation="2" @click="addToCart(product.id)">
+                          + 
+                      </v-btn>
+                    </div>
+
                     <v-card-actions>
-                      <v-btn color="red" @click="removeFromCart(product.id)">
+                      <v-btn  elevation="2" color="red" @click="removeAllCart(product.id)">
                         <v-icon left>mdi-delete</v-icon>
                         Bỏ Chọn
                       </v-btn>
                     </v-card-actions>
-                    
-                    <div id="example-1">
-                      <v-btn color="red" @click="removeFromCart(product.id)">
-                          -
-                      </v-btn>
-                      <v-row>
-                        {{ product.quantity }}
-                      </v-row>
-                      <v-btn @click="addToCart(product.id)">
-                          + 
-                      </v-btn>
-
-                      
-                    </div>
-                    <p> Số tiền phải trả là {{ product.price }} VND</p>
+                    <br>
+                    <p style="color: red; font-size: 20px">Thanh toán: {{ total }} VND</p>
 
                   </v-col>
                 </v-row>
@@ -56,7 +53,6 @@
             <v-text-field label="Phone" />
             <v-text-field label="Address" />
 
-            <p style="color: red; font-size: 20px">Total: {{ total }} VND</p>
             <v-btn color="primary"> Checkout </v-btn>
           </v-card-text>
         </v-card>
@@ -65,18 +61,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component
 export default class Carts extends Vue {
-  get inCart(): Object {
+  get inCart() {
     return this.$store.getters.inCart;
   }
-  get Cart(): Array<any> {
-    return this.$store.getters.inCart.map((cartItem: any) => {
-      return this.$store.getters.forProduct.find((forProductItem: any) => {
+  get Cart() {
+    return this.$store.getters.inCart.map((cartItem) => {
+      return this.$store.getters.forProduct.find((forProductItem) => {
         return cartItem === forProductItem.id;
       });
     });
@@ -87,36 +83,43 @@ export default class Carts extends Vue {
     
   }
 
-   get count(): number {
+   get count(){
     return this.Cart.reduce((acc, cur) => (acc + cur.quantity),0);
   }
 
-  get total(): number {
+  get total() {
     return this.Cart.reduce((acc, cur) => (acc + cur.price*cur.quantity), 0)
  }
 
-  removeFromCart(id: any) {
+  removeToCart(id) {
         for (let i = 0; i < this.Cart.length; i++) {
           if (this.Cart[i].id === id) {
             if(this.Cart[i].quantity >= 1) {
                 this.Cart[i].quantity--;
-            } else {
-               this.$store.dispatch("removeToCart", i);
-            }    
+            }  
           }
-      }      
+        }      
   }
 
-  addToCart(id: any) {
+  addToCart(id) {
         for (let i = 0; i < this.Cart.length; i++) {
           if (this.Cart[i].id === id) {
                 this.Cart[i].quantity++;
-          }  else {
-          this.$store.dispatch("addToCart", i);
-          }
+          } 
       }      
     }
+
+  removeAllCart(id) {
+    for (let i = 0; i < this.Cart.length; i++) {
+          if (this.Cart[i].id === id) {
+            if(this.Cart[i].quantity >= 1) {
+                this.Cart[i].quantity=i;
+            }     
+          }
+        }
+    }
   }
+  
 
 </script>
 <style lang="sass" scoped>
@@ -126,4 +129,21 @@ export default class Carts extends Vue {
     p
       color: red
       font-size: 20px
+
+.example-0
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  border: 1px solid red
+
+.example-1 
+  display: flex
+  justify-content: space-around
+  align-item: center
+  width: 60%
+  font-size: 20px
+  .v-btn
+    min-width: 50px
+    font-size: 30px
+    font-weight: light
 </style>

@@ -10,11 +10,12 @@
     <v-row>
       <v-sheet class="mx-auto" elevation="8" max-width="1300">
         <p class="title">SĂN SALE ONLINE MỖI NGÀY</p>
-        <v-slide-group class="pa-4" multiple show-arrows>
+        <v-slide-group class="pa-4" multiple show-arrows style="padding-top: 0px !important">
           <v-slide-item
             v-for="product in product"
             :key="product.id"
             v-slot="{ toggle }"
+            
           >
             <v-hover v-slot="{ hover }" open-delay="200">
               <v-card
@@ -35,9 +36,11 @@
                     <v-icon left small>fa-plus</v-icon>
                     MUA
                   </v-btn>
-                  <v-btn outlined @click="editProduc(product.id)">
+                  
+                  <v-btn v-if="editProduc === 'email'" outlined @click="editProduc(product.id)">
                     Edit
                   </v-btn>
+                    
                   <ProductDetail :product="product" />
                 </v-card-actions>
               </v-card>
@@ -68,8 +71,8 @@
     </v-row>
     <v-row class="mx-auto banner">
       <v-col md="3" v-for="product in product" :key="product.id">
-        <v-card outlined>
-          <v-img :src="product.image" height="100%" style="padding-top: 10px"></v-img>
+        <v-card outlined style="padding: 10px">
+          <v-img :src="product.image" height="100%"></v-img>
           <v-card-title>{{ product.name }}</v-card-title>
           <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
           <v-card-actions>
@@ -114,6 +117,12 @@ export default class Carts extends Vue {
     this.$store.dispatch("addToCart", id);
     alert("Đã thêm sản phẩm vào giỏ hàng");
   }
+
+  editProduc() {
+    // var editActive = localStorage.getItem('email');
+
+  }
+   
 }
 </script>
 <style lang="sass" scoped>
@@ -137,5 +146,11 @@ export default class Carts extends Vue {
   background: #fed100
 .v-sheet
   border-radius: 5px
-
+.mx-auto
+  .title 
+    padding-top: 20px
+.v-card-actions
+  display: flex
+  justify-center: center
+  align-items: center
 </style>

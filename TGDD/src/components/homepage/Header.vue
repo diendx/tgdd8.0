@@ -107,9 +107,7 @@ export default class Header extends Vue {
   padding: 12px 12px 12px 0
   background-size: auto 
   background-repeat: no-repeat
-  .carousel
-  background-size: auto 
-  background-repeat: no-repeat
+  
   
 
 
