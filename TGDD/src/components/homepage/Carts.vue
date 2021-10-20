@@ -10,10 +10,12 @@
                 :elevation="hover ? 16 : 2"
                 :class="{ 'on-hover': hover }"
               >
-                <v-row style="padding-top: 15px">
-                  <v-col md="5" justify="center" align="center"
-                    ><v-img :src="product.image" ></v-img
-                  ></v-col>
+                <v-row style="padding: 15px 0px">
+                  <v-col md="5" justify="center" align="center">
+                    <v-hover>
+                      <v-img :src="product.image" ></v-img>
+                    </v-hover>
+                  </v-col>
                   <v-col class="example-0" md="7">
                     <v-card-title>{{ product.name }}</v-card-title>
                     <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
@@ -33,7 +35,6 @@
                         Bỏ Chọn
                       </v-btn>
                     </v-card-actions>
-                    <br>
                     <p style="color: red; font-size: 20px">Thanh toán: {{ total }} VND</p>
 
                   </v-col>
@@ -83,13 +84,13 @@ export default class Carts extends Vue {
     
   }
 
-   get count(){
+    get count(){
     return this.Cart.reduce((acc, cur) => (acc + cur.quantity),0);
   }
 
   get total() {
     return this.Cart.reduce((acc, cur) => (acc + cur.price*cur.quantity), 0)
- }
+  }
 
   removeToCart(id) {
         for (let i = 0; i < this.Cart.length; i++) {
@@ -133,8 +134,9 @@ export default class Carts extends Vue {
 .example-0
   display: flex
   flex-direction: column
-  justify-content: space-between
+  justify-content: space-evenly
   border: 1px solid red
+  text-align: left
 
 .example-1 
   display: flex
@@ -146,4 +148,5 @@ export default class Carts extends Vue {
     min-width: 50px
     font-size: 30px
     font-weight: light
+
 </style>

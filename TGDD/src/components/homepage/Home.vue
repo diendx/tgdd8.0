@@ -14,8 +14,8 @@ import ProductList from '../homepage/ProductList.vue'
 @Component({
     components:{
         Header,
-        Footer,
         ProductList,
+        Footer
     }
 })
 export default class Home extends Vue{

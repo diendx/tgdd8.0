@@ -22,6 +22,20 @@
                 <div>
                   <span>Thông Tin: {{ product.detail }}</span>
                 </div>
+
+                <div id="rating-star">
+                  <v-app id="inspire">
+                    <div class="text-center">
+                      <v-rating
+                        v-model="rating"
+                        background-color="orange lighten-3"
+                        color="orange"
+                        large
+                      ></v-rating>
+                    </div>
+                  </v-app>
+                </div>
+
               </v-card-text>
             </v-col>
           </div>
@@ -47,6 +61,7 @@ import { Prop } from "vue-property-decorator";
 @Component
 export default class ProductDetail extends Vue {
   @Prop() private product?: any;
+
 }
 
 </script>

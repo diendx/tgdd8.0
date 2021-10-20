@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-row>
-      <v-col class="mx-auto banner">
-        <v-img
+      <v-col  class="mx-auto banner-top">
+        <v-img  
           src="//cdn.tgdd.vn/2021/09/banner/t9-1200-60-1200x60-3.png"
         ></v-img>
       </v-col>
@@ -49,11 +49,10 @@
         </v-slide-group>
       </v-sheet>
     </v-row>
-    <v-row class="mx-auto banner">
+    <v-row style="width: 1330px" class="mx-auto banner">
       <v-col md="4">
         <v-card>
           <v-img
-          
             src="//cdn.tgdd.vn/2021/06/banner/samsung-390-210-390x210-2.png" 
           ></v-img>
         </v-card>
@@ -99,7 +98,7 @@ import Product from '@/product'
 })
 export default class Carts extends Vue {
   private product=Product;
-   getAll() {
+    getAll() {
     ProductService.getAll()
       .then((response) => {
         this.product = response.data;
@@ -122,7 +121,6 @@ export default class Carts extends Vue {
     // var editActive = localStorage.getItem('email');
 
   }
-   
 }
 </script>
 <style lang="sass" scoped>
@@ -131,8 +129,10 @@ export default class Carts extends Vue {
 >.v-card__text
   color: #000
 .banner
-  max-width: 1300px
+  max-width: 1325px
   padding: 12px 0
+.banner-top
+  max-width: 1325px
 .title
   color: #000
   font-size: 30px
@@ -149,8 +149,10 @@ export default class Carts extends Vue {
 .mx-auto
   .title 
     padding-top: 20px
+    padding-left: 80px
 .v-card-actions
   display: flex
   justify-center: center
   align-items: center
-</style>
+  
+</style> 

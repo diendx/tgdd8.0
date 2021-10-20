@@ -5,7 +5,7 @@ import Product from '@/product'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-   forProduct:Product,
+    forProduct:Product,
     inCart: []
   },
   getters: {
@@ -25,9 +25,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
-     addToCart (context, id) {
-       context.commit('ADD_TO_CART', id)
-     },
+      addToCart (context, id) {
+        context.commit('ADD_TO_CART', id)
+      },
     removeFromCart (context, id) {
       context.commit('REMOVE_ITEM_CART', id)
     },

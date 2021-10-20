@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-app-bar style="background:#fed100">
-      <v-toolbar-title>THE GIOI DI DONG</v-toolbar-title>
+    <v-app-bar style="background:#fed100" >
+      <v-toolbar-title style="padding-left: 250px">THE GIOI DI DONG</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <span class="hidden-sm-and-up">
@@ -63,4 +63,8 @@ export default class Menu extends Vue {
 }
 
 </script>
+<style lang="sass" scoped>
+
+
+</style>
 
