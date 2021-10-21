@@ -18,7 +18,7 @@
                   </v-col>
                   <v-col class="example-0" md="7">
                     <v-card-title>{{ product.name }}</v-card-title>
-                    <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
+                    <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }} VND</v-card-subtitle>
                     <div class="example-1" justify="space-around" align="center">
                       <v-btn elevation="2" style="padding-right: 15px" color="red" @click="removeToCart(product.id)">
                           -
@@ -32,11 +32,10 @@
                     <v-card-actions>
                       <v-btn  elevation="2" color="red" @click="removeAllCart(product.id)">
                         <v-icon left>mdi-delete</v-icon>
-                        Bỏ Chọn
+                        Bỏ 
                       </v-btn>
                     </v-card-actions>
-                    <p style="color: red; font-size: 20px">Thanh toán: {{ total }} VND</p>
-
+                    <p style="color: red; font-size: 20px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
                   </v-col>
                 </v-row>
               </v-card>
@@ -93,30 +92,30 @@ export default class Carts extends Vue {
   }
 
   removeToCart(id) {
-        for (let i = 0; i < this.Cart.length; i++) {
-          if (this.Cart[i].id === id) {
-            if(this.Cart[i].quantity >= 1) {
-                this.Cart[i].quantity--;
-            }  
-          }
-        }      
+    for (let i = 0; i < this.Cart.length; i++) {
+      if (this.Cart[i].id === id) {
+        if(this.Cart[i].quantity >= 1) {
+            this.Cart[i].quantity--;
+        }  
+      }
+    }      
   }
 
   addToCart(id) {
-        for (let i = 0; i < this.Cart.length; i++) {
-          if (this.Cart[i].id === id) {
-                this.Cart[i].quantity++;
-          } 
-      }      
+    for (let i = 0; i < this.Cart.length; i++) {
+      if (this.Cart[i].id === id) {
+            this.Cart[i].quantity++;
+      } 
+  }      
     }
 
   removeAllCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
-          if (this.Cart[i].id === id) {
-            if(this.Cart[i].quantity >= 1) {
-                this.Cart[i].quantity=i;
-            }     
-          }
+        if (this.Cart[i].id === id) {
+          if(this.Cart[i].quantity >= 1) {
+              this.Cart[i].quantity=i;
+          }     
+        }
         }
     }
   }
@@ -135,7 +134,6 @@ export default class Carts extends Vue {
   display: flex
   flex-direction: column
   justify-content: space-evenly
-  border: 1px solid red
   text-align: left
 
 .example-1 

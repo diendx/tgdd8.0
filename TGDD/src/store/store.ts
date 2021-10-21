@@ -35,5 +35,5 @@ export default new Vuex.Store({
       context.commit('INC_QUANTITY', id)
     }
   },
-  modules: {}
+  
 })

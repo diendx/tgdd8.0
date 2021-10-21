@@ -1,6 +1,6 @@
 .<template>
-  <c
-    dark
+  <v-footer
+    yellow
     padless
   >
     <v-card
@@ -31,7 +31,7 @@
         {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
       </v-card-text>
     </v-card>
-  </c>
+  </v-footer>
 </template>
 
 <script>
@@ -50,6 +50,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.v-card
+.v-footer
+  margin-top: 25px
+.v-card 
+  margin: 0 auto
+  width: 100%
+
+.yellow
+  .lighten-1
+  background: #ffeb3b !important
+.black--text 
   width: 1300px
+  margin: 0 auto
+
+
 </style>

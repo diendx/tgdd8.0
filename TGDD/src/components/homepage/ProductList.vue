@@ -15,7 +15,6 @@
             v-for="product in product"
             :key="product.id"
             v-slot="{ toggle }"
-            
           >
             <v-hover v-slot="{ hover }" open-delay="200">
               <v-card
@@ -30,7 +29,7 @@
               >
                 <v-img :src="product.image" height="256"></v-img>
                 <v-card-title>{{ product.name }}</v-card-title>
-                <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
+                <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }} </v-card-subtitle>
                 <v-card-actions>
                   <v-btn outlined @click="addToCart(product.id)">
                     <v-icon left small>fa-plus</v-icon>
@@ -70,10 +69,24 @@
     </v-row>
     <v-row class="mx-auto banner">
       <v-col md="3" v-for="product in product" :key="product.id">
-        <v-card outlined style="padding: 10px">
+        <v-card outlined style="padding: 10px, min-height: 495px">
           <v-img :src="product.image" height="100%"></v-img>
           <v-card-title>{{ product.name }}</v-card-title>
-          <v-card-subtitle> {{ product.price }} VND</v-card-subtitle>
+          <div class="text-decoration-line-through"> {{ product.price2 }}</div>
+            <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }}</v-card-subtitle>
+          <div class="rating-star">
+            <div class="text-center">
+              <v-rating
+                :value="4.5"
+                color="amber"
+                dense
+                half-increments
+                readonly
+                size="14"
+              ></v-rating>
+            </div>
+          </div>
+
           <v-card-actions>
             <v-btn outlined @click="addToCart(product.id)">
               <v-icon left small>fa-plus</v-icon>
@@ -119,8 +132,8 @@ export default class Carts extends Vue {
 
   editProduc() {
     // var editActive = localStorage.getItem('email');
-
   }
+
 }
 </script>
 <style lang="sass" scoped>
@@ -130,7 +143,7 @@ export default class Carts extends Vue {
   color: #000
 .banner
   max-width: 1325px
-  padding: 12px 0
+
 .banner-top
   max-width: 1325px
 .title
@@ -154,5 +167,17 @@ export default class Carts extends Vue {
   display: flex
   justify-center: center
   align-items: center
+.rating-star
+  min-height: 0px !important
+  display: flex
+  justify-start  
+  padding-left: 16px
+.text-decoration-line-through 
+  font-size: 12px
+  padding-left: 16px
+.v-card__subtitle  
+  padding: 0px 16px
+.v-card__title 
+  padding-bottom: 16px
   
 </style> 

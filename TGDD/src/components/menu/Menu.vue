@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar style="background:#fed100" >
-      <v-toolbar-title style="padding-left: 250px">THE GIOI DI DONG</v-toolbar-title>
+      <v-toolbar-title style="padding-left: 170px">THE GIOI DI DONG</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <span class="hidden-sm-and-up">
