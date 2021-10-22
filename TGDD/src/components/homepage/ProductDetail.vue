@@ -17,7 +17,7 @@
                   <span>Tên Sản Phẩm: {{ product.name }}</span>
                 </div>
                 <div>
-                  <span>Giá Tiền: {{ product.price }} VND</span>
+                  <span>Giá Tiền: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }}</span>
                 </div>
                 <div>
                   <span>Thông Tin: {{ product.detail }}</span>
@@ -30,7 +30,6 @@
           <v-card-actions class="justify">
             <v-btn text @click="dialog.value = false">Close</v-btn>
           </v-card-actions>
-
           <v-card-actions class="justify">
             <v-btn text @click="dialog.value = false">edit</v-btn>
           </v-card-actions>

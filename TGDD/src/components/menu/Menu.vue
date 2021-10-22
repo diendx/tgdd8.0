@@ -2,7 +2,9 @@
   <div>
     <v-app-bar style="background:#fed100" >
       <v-toolbar-title style="padding-left: 170px">THE GIOI DI DONG</v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer>
+      </v-spacer>
+      
 
       <span class="hidden-sm-and-up">
         <v-btn @click.stop="drawer = !drawer"> Menu </v-btn>
@@ -47,23 +49,35 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import Search from '../homepage/Search.vue';
 
-@Component
+@Component({
+  components:{
+    Search
+  }
+})
+
 export default class Menu extends Vue {
   private drawer = false;
   item = [
     { title: "Home", link: "/", icon: "home" },
     { title: "Store", link: "store", icon: "shopping-basket" },
     { title: "Cart", link: "cart", icon: "shopping-cart" },
+    
   ];
 
   get numberCart():number{
     return this.$store.getters.inCart.length;
   }
+  
+  
+
 }
 
 </script>
 <style lang="sass" scoped>
+.v-spacer 
+  border: 1px solid red
 
 
 </style>

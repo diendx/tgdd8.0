@@ -25,9 +25,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
-      addToCart (context, id) {
-        context.commit('ADD_TO_CART', id)
-      },
+    addToCart (context, id) {
+      context.commit('ADD_TO_CART', id)
+    },
     removeFromCart (context, id) {
       context.commit('REMOVE_ITEM_CART', id)
     },
