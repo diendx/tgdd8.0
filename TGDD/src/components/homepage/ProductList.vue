@@ -22,24 +22,29 @@
                 :elevation="hover ? 16 : 2"
                 :class="{ 'on-hover': hover }"
                 height="420"
-                width="260"
+                width="220"
                 style="padding-top: 10px"
+                
                 class="ma-4"
+                
                 @click="toggle" 
               >
-                <v-img :src="product.image" height="256"></v-img>
+                <div class="slide-img">
+                  <v-img :src="product.image" height="256"></v-img>
+                </div>
                 <v-card-title>{{ product.name }}</v-card-title>
                 <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }} </v-card-subtitle>
                 <v-card-actions>
-                  <v-btn outlined @click="addToCart(product.id)">
-                    <v-icon left small>fa-plus</v-icon>
-                    MUA
-                  </v-btn>
-                  
+                  <div class="btn1">
+                    <v-btn outlined @click="addToCart(product.id)">
+                      <v-icon left small>fa-plus</v-icon>
+                      MUA
+                    </v-btn>
+                  </div>
                   <v-btn v-if="editProduc === 'email'" outlined @click="editProduc(product.id)">
                     Edit
                   </v-btn>
-                    
+                  
                   <ProductDetail :product="product" />
                 </v-card-actions>
               </v-card>
@@ -70,10 +75,12 @@
     <v-row class="mx-auto banner">
       <v-col md="3" v-for="product in product" :key="product.id">
         <v-card outlined style="padding: 10px, min-height: 495px">
+          <div class="img-background">
           <v-img :src="product.image" height="100%"></v-img>
+          </div>
           <v-card-title>{{ product.name }}</v-card-title>
           <div class="text-decoration-line-through"> {{ product.price2 }}</div>
-            <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }}</v-card-subtitle>
+          <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }}</v-card-subtitle>
           <div class="rating-star">
             <div class="text-center">
               <v-rating
@@ -87,7 +94,7 @@
             </div>
           </div>
 
-          <v-card-actions>
+          <v-card-actions class="btn2">
             <v-btn outlined @click="addToCart(product.id)">
               <v-icon left small>fa-plus</v-icon>
               mua
@@ -139,13 +146,16 @@ export default class Carts extends Vue {
 <style lang="sass" scoped>
 .v-card.on-hover.theme--dark
   background-color: rgba(#FFF, 0.8)
+
 >.v-card__text
   color: #000
+  
 .banner
   max-width: 1325px
 
 .banner-top
   max-width: 1325px
+
 .title
   color: #000
   font-size: 30px
@@ -155,29 +165,64 @@ export default class Carts extends Vue {
   padding: 0 0 0 40px
   margin: 0
   background: #fed100
+
 .v-slide-group
   background: #fed100
+
 .v-sheet
   border-radius: 5px
+
 .mx-auto
   .title 
     padding-top: 20px
     padding-left: 80px
+
 .v-card-actions
   display: flex
   justify-center: center
   align-items: center
+
 .rating-star
   min-height: 0px !important
   display: flex
   justify-start  
-  padding-left: 16px
+  padding-left: 24px
+
 .text-decoration-line-through 
   font-size: 12px
-  padding-left: 16px
+  padding-left: 25px
+
 .v-card__subtitle  
-  padding: 0px 16px
+  padding: 0px 25px
+
 .v-card__title 
   padding-bottom: 16px
-  
+  padding-left: 25px
+
+.v-card__actions
+  display: flex
+  justify-content: space-around
+
+.img-background 
+  width: 80%
+  margin: 0 auto
+  background-size: contain
+  margin-top: 25px
+
+.btn1
+  padding: 12px
+
+.btn2
+  display: flex
+  justify-content: flex-start
+  padding-left: 25px
+
+.ma-4
+  margin-left: 0 !important
+
+.slide-img 
+  width: 90%
+  margin: 0 auto
+  background-siae: contain, cover
+
 </style> 

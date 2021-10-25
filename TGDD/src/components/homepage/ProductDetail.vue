@@ -1,9 +1,14 @@
 <template>
   <v-col cols="auto">
     <v-dialog transition="dialog-top-transition" max-width="1100">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" v-bind="attrs" v-on="on">XEM </v-btn>
+
+      <template class="watch-btn" v-slot:activator="{ on, attrs }">
+        <v-btn color="primary" v-bind="attrs" v-on="on" >
+          <v-icon left small>fa-eye</v-icon>
+          XEM
+        </v-btn>
       </template>
+
       <template v-slot:default="dialog">
         <v-card>
           <v-toolbar color="primary" dark>Product Detail</v-toolbar>
@@ -55,4 +60,6 @@ export default class ProductDetail extends Vue {
 .v-card__text
   div
     padding: 10px
-</style>
+.watch-btn 
+  padding: 0
+</style>Filter
