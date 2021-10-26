@@ -3,10 +3,12 @@
     <v-dialog transition="dialog-top-transition" max-width="1100">
 
       <template class="watch-btn" v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" v-bind="attrs" v-on="on" >
-          <v-icon left small>fa-eye</v-icon>
-          XEM
-        </v-btn>
+        <div class="btn2">
+          <v-btn color="primary" v-bind="attrs" v-on="on" >
+            <v-icon left small>fa-eye</v-icon>
+            XEM
+          </v-btn>
+        </div>
       </template>
 
       <template v-slot:default="dialog">
@@ -30,8 +32,8 @@
               </v-card-text>
             </v-col>
           </div>
-        
-        <div style="  ">
+
+        <div style=" ">
           <v-card-actions class="justify">
             <v-btn text @click="dialog.value = false">Close</v-btn>
           </v-card-actions>
@@ -60,6 +62,8 @@ export default class ProductDetail extends Vue {
 .v-card__text
   div
     padding: 10px
+
 .watch-btn 
   padding: 0
+
 </style>Filter

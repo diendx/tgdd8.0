@@ -21,7 +21,7 @@
                 outlined
                 :elevation="hover ? 16 : 2"
                 :class="{ 'on-hover': hover }"
-                height="420"
+                height="405"
                 width="220"
                 style="padding-top: 10px"
                 
@@ -38,7 +38,7 @@
                   <div class="btn1">
                     <v-btn outlined @click="addToCart(product.id)">
                       <v-icon left small>fa-plus</v-icon>
-                      MUA
+                      muc
                     </v-btn>
                   </div>
                   <v-btn v-if="editProduc === 'email'" outlined @click="editProduc(product.id)">
@@ -201,16 +201,15 @@ export default class Carts extends Vue {
 
 .v-card__actions
   display: flex
-  justify-content: space-around
+  margin-left: 5px
 
 .img-background 
-  width: 80%
+  width: 90%
   margin: 0 auto
   background-size: contain
   margin-top: 25px
 
-.btn1
-  padding: 12px
+
 
 .btn2
   display: flex
@@ -223,6 +222,6 @@ export default class Carts extends Vue {
 .slide-img 
   width: 90%
   margin: 0 auto
-  background-siae: contain, cover
+  background-size: contain, cover
 
 </style> 

@@ -108,7 +108,7 @@ export default class Header extends Vue {
   background-size: auto 
   background-repeat: no-repeat
   
-  
+
 
 
 </style>
