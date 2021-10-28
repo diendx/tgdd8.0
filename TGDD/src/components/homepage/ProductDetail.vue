@@ -15,9 +15,13 @@
         <v-card>
           <v-toolbar color="primary" dark>Product Detail</v-toolbar>
           <div style="display: flex" class="detail">
-            <v-col md="4">
-              <v-img :src="product.image" height="350"></v-img>
+
+            <v-col  md="4">
+              <div class="zoom-in">
+                <v-img :src="product.image" height="350"></v-img>
+              </div>
             </v-col>
+
             <v-col md="8">
               <v-card-text style="font-size: 18px">
                 <div>
@@ -58,12 +62,23 @@ export default class ProductDetail extends Vue {
 }
 
 </script>
-<style lang="sass" scoped>
-.v-card__text
-  div
+<style lang="css" scoped>
+.v-card__text.div {
     padding: 10px
-
-.watch-btn 
+}
+.watch-btn { 
   padding: 0
+}
+.zoom-in {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.zoom-In:hover {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+  border: 1px solid red
+}
 
 </style>Filter

@@ -20,7 +20,7 @@
                     <v-card-title>{{ product.name }}</v-card-title>
                     <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }} VND</v-card-subtitle>
                     <div class="example-1" justify="space-around" align="center">
-                      <v-btn elevation="2" style="padding-right: 15px" color="red" @click="removeToCart(product.id)">
+                      <v-btn elevation="2" style="padding-right: 15px" color="blue" @click="removeToCart(product.id)">
                           -
                       </v-btn>
                         {{ product.quantity }}
@@ -30,12 +30,15 @@
                     </div>
 
                     <v-card-actions>
-                      <v-btn  elevation="2" color="red" @click="removeAllCart(product.id)">
-                        <v-icon left>mdi-delete</v-icon>
-                        Bỏ 
-                      </v-btn>
+                      <div class="deleter-cart">
+                        <v-btn  elevation="2" color="red"  padding-left="7px" @click="removeAllCart(product.id)">
+                          <v-icon left>mdi-delete</v-icon>
+                          Bỏ chọn
+                        </v-btn>
+                      </div>
                     </v-card-actions>
-                    <p style="color: red; font-size: 20px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
+
+                    <p style="color: red; font-size: 20px; padding-left: 10px; padding-top: 10px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
                   </v-col>
                 </v-row>
               </v-card>
@@ -146,5 +149,9 @@ export default class Carts extends Vue {
     min-width: 50px
     font-size: 30px
     font-weight: light
+  
+.deleter-cart
+  padding-left: 7px
+  padding-top: 10px
 
 </style>

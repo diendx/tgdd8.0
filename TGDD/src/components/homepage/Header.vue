@@ -3,7 +3,6 @@
     <v-row>
       <v-col md="8">
         <v-carousel cycle height="435" width="850">
-
           <v-carousel-item
             v-for="(item, i) in items"
             :key="i"

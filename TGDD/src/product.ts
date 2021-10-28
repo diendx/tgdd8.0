@@ -5,7 +5,6 @@ export default [
     quantity:1,
     price: 400000,
     price2: '400.000 VND',
-
     image:
       'https://cdn.tgdd.vn/Products/Images/42/153856/iphone-xi-do-600x600.jpg',
     detail: 'Trong những tháng cuối năm 2020, Apple đã chính thức giới thiệu đến người dùng cũng như iFan thế hệ iPhone 12 series mới với hàng loạt tính năng bứt phá, thiết kế được lột xác hoàn toàn, hiệu năng đầy mạnh mẽ và một trong số đó chính là iPhone 12 64GB.'

@@ -97,7 +97,7 @@
           <v-card-actions class="btn2">
             <v-btn outlined @click="addToCart(product.id)">
               <v-icon left small>fa-plus</v-icon>
-              mua
+              đặt móng
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -209,8 +209,6 @@ export default class Carts extends Vue {
   background-size: contain
   margin-top: 25px
 
-
-
 .btn2
   display: flex
   justify-content: flex-start
@@ -223,5 +221,6 @@ export default class Carts extends Vue {
   width: 90%
   margin: 0 auto
   background-size: contain, cover
+  
 
 </style> 

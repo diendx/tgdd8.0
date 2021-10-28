@@ -3,45 +3,18 @@
     <v-app-bar style="background:#fed100" >
       <v-toolbar-title style="padding-left: 170px">THE GIOI DI DONG</v-toolbar-title>
 
-      <div class="row"> 
-        <p> {{ text | to-uppercase | toLowerCase  }}</p>
-      </div>
-
-      <div class="row">
-        <div class=" col-xs-5 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-          <input type="text" class="form-control mb-md-3">
-          <div class="card">
-            <div class="card-body">
-              <ul>
-                <li v-for="product in filteredProducts" v-bind:key="product">{{ product.name }} </li>
-              </ul>
-            </div>
-          </div>
+      <div class="search">
+        <div class="search-wrapper">
+          <v-icon small left>fas fa-search</v-icon>
+          <input type="text" v-model="search" placeholder="Search title.."/>
+          
+              <!-- <label>Search Users:</label> -->
         </div>
-
+        <ul>
+          <li v-for="user in filteredAndSorted" :key="user.age">{{user.name}}</li>
+        </ul> 
       </div>
-
-      <!-- <template>
-        <div class="filter">
-          <v-container fluid>
-            <v-row>
-              <v-col cols="5">
-                <v-combobox
-                  v-model="select"
-                  :items="items"
-                  label="Filter"
-                  multiple
-                  outlined
-                  dense
-                ></v-combobox>
-              </v-col>
-            </v-row>
-          </v-container>
-        </div>
-      </template> -->
       <v-spacer> </v-spacer>
-
-    
 
       <v-toolbar-items class="hidden-xs-only">
         <v-btn to="/" text>
@@ -85,7 +58,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import Search from '../homepage/Search.vue';
-import Product from '@/product'
+import Product from '../../product';
 
 @Component({
   components:{
@@ -107,35 +80,33 @@ export default class Menu extends Vue {
     return this.$store.getters.inCart.length;
   }
 
-  data() {
-    return {
-      products: {},
-      filterProduct:""
+  search = '';
+  userList = [
+    {
+      id: 1,
+      name: "Prem"
+    },
+    {
+      id: 1,
+      name: "Chandu"
+    },
+    {
+      id: 1,
+      name: "Shravya"
     }
-  }
-  filters: {
-    toLowerCase(text) {
-      return text.toLowerCase();
-    }
-  }
-  computed: {
-    filteredProducts(){
-      return this.products.filter((element) => {
-        return element.match(this.filterProduct);
-      })
-    }
-  }
+  ];
 
-  // data () {
-  //   return {
-  //     items: [
-  //       'Iphone',
-  //       'IMAC',
-  //       'SamSung',
-  //       'OPPO',
-  //     ],
-  //   }
-  // }
+  filteredAndSorted() {
+      function compare(a: any, b: any) {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      }
+      
+      return this.userList.filter(user => {
+        return user.name.toLowerCase().includes(this.search.toLowerCase())
+      }).sort(compare)
+    }
 }
 
 </script>
@@ -145,6 +116,9 @@ export default class Menu extends Vue {
 
 .filter
   padding: 20px 0 0 20px
+
+.search
+  padding-left: 30px  
 
 </style>
 
