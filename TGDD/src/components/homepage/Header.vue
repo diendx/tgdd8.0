@@ -17,7 +17,6 @@
 
         </v-carousel>
       </v-col>
-
       <v-col md="4" style="padding: 12px 0px 12px 12px"> 
 
         <v-row>
@@ -53,7 +52,6 @@
             </v-card>
           </v-col>
         </v-row>
-
       </v-col>
     </v-row>
   </v-container>

@@ -5,10 +5,8 @@
 
       <div class="search">
         <div class="search-wrapper">
-          <v-icon small left>fas fa-search</v-icon>
+          <v-icon small left>mdi-magnify</v-icon>
           <input type="text" v-model="search" placeholder="Search title.."/>
-          
-              <!-- <label>Search Users:</label> -->
         </div>
         <ul>
           <li v-for="user in filteredAndSorted" :key="user.age">{{user.name}}</li>

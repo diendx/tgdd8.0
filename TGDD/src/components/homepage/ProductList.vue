@@ -16,7 +16,7 @@
             :key="product.id"
             v-slot="{ toggle }"
           >
-            <v-hover v-slot="{ hover }" open-delay="200">
+            <v-hover v-slot="{ hover }">
               <v-card
                 outlined
                 :elevation="hover ? 16 : 2"
@@ -24,9 +24,7 @@
                 height="405"
                 width="220"
                 style="padding-top: 10px"
-                
                 class="ma-4"
-                
                 @click="toggle" 
               >
                 <div class="slide-img">
@@ -109,8 +107,8 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import ProductDetail from "../homepage/ProductDetail.vue";
-import ProductService from "@/service/ProductService";
-import Product from '@/product'
+import ProductService from '../../service/ProductService';
+import Product from '../../product'
 @Component({
   components: {
     ProductDetail,
@@ -208,6 +206,11 @@ export default class Carts extends Vue {
   margin: 0 auto
   background-size: contain
   margin-top: 25px
+  display: block
+  transition: all 0.3s ease-in-out
+
+.img-background:hover 
+  transform: scale(1.1)
 
 .btn2
   display: flex
@@ -218,9 +221,13 @@ export default class Carts extends Vue {
   margin-left: 0 !important
 
 .slide-img 
-  width: 90%
+  width: 100%
   margin: 0 auto
   background-size: contain, cover
-  
+  display: block
+  transition: all 0.3s ease-in-out
+
+.slide-img:hover
+  transform: scale(0.9)
 
 </style> 
