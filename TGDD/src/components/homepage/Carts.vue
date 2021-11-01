@@ -20,11 +20,13 @@
                     <v-card-title>{{ product.name }}</v-card-title>
                     <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }} VND</v-card-subtitle>
                     <div class="example-1" justify="space-around" align="center">
-                      <v-btn elevation="2" style="padding-right: 15px" color="blue" @click="removeToCart(product.id)">
+
+                      <v-btn elevation="2" style="padding-right: 15px" @click="removeToCart(product.id)">
                           -
                       </v-btn>
                         {{ product.quantity }}
-                      <v-btn elevation="2" @click="addToCart(product.id)">
+
+                      <v-btn elevation="2" color="blue" @click="addToCart(product.id)">
                           + 
                       </v-btn>
                     </div>
@@ -83,11 +85,10 @@ export default class Carts extends Vue {
 
   created() {
     console.log(this.inCart);
-    
   }
 
-    get count(){
-    return this.Cart.reduce((acc, cur) => (acc + cur.quantity),0);
+  get count(){
+    return this.Cart.reduce((acc, cur) => (acc + cur.quantity),1);
   }
 
   get total() {
@@ -97,7 +98,7 @@ export default class Carts extends Vue {
   removeToCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
       if (this.Cart[i].id === id) {
-        if(this.Cart[i].quantity >= 1) {
+        if(this.Cart[i].quantity >1) {
             this.Cart[i].quantity--;
         }  
       }
@@ -109,17 +110,17 @@ export default class Carts extends Vue {
       if (this.Cart[i].id === id) {
             this.Cart[i].quantity++;
       } 
-  }      
-    }
+    }      
+  }
 
   removeAllCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
         if (this.Cart[i].id === id) {
           if(this.Cart[i].quantity >= 1) {
-              this.Cart[i].quantity=i;
+              this.Cart[i].quantity=1;
           }     
         }
-        }
+      }
     }
   }
   
