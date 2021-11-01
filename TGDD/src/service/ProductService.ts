@@ -1,5 +1,6 @@
 import http from '../http-common'
 class ProductService {
+
   getAll () {
     return http.get('/getAllProduct')
   }

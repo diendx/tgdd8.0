@@ -8,6 +8,12 @@
       </v-col>
     </v-row>
     <v-row>
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+                  {{ text }}
+                  <template v-slot:action="{ attrs }">
+                      <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">Đóng</v-btn>
+                  </template>
+      </v-snackbar>
       <v-sheet class="mx-auto" elevation="8" max-width="1300">
         <p class="title">SĂN SALE ONLINE MỖI NGÀY</p>
         <v-slide-group class="pa-4" multiple show-arrows style="padding-top: 0px !important">
@@ -104,43 +110,25 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import ProductDetail from "../homepage/ProductDetail.vue";
-import ProductService from '../../service/ProductService';
-import Product from '../../product'
-@Component({
-  components: {
-    ProductDetail,
-  },
-})
-export default class Carts extends Vue {
-  private product=Product;
-    getAll() {
-    ProductService.getAll()
-      .then((response) => {
-        this.product = response.data;
-        console.log(response.data);
-      })
-      .catch((errors) => {
-        console.log(errors);
-      });
-  }
-  created(){
-    this.getAll();
-  }
-
-  addToCart(id: any) {
-    this.$store.dispatch("addToCart", id);
-    alert("Đã thêm sản phẩm vào giỏ hàng");
-  }
-
-  editProduc() {
-    // var editActive = localStorage.getItem('email');
-  }
-
+import product from '../../product'
+export default {
+    data() {
+      return {
+        snackbar: false,
+        text: 'Đã thêm vào giỏ hàng',
+        timeout: 3000,
+        product: product
+      }
+    },
+    methods: {
+        addToCart(id:any) {
+          this.$store.dispatch('addToCart',id)
+          this.snackbar = true;
+        }
+    }
 }
 </script>
+
 <style lang="sass" scoped>
 .v-card.on-hover.theme--dark
   background-color: rgba(#FFF, 0.8)
