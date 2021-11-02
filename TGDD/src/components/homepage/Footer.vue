@@ -52,13 +52,14 @@ export default {
 <style lang="sass" scoped>
 .v-footer
   margin-top: 25px
+
 .v-card 
   margin: 0 auto
   width: 100%
 
 .yellow
-  .lighten-1
   background: #ffeb3b !important
+
 .black--text 
   width: 1300px
   margin: 0 auto

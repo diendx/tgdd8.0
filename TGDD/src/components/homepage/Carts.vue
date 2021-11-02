@@ -13,34 +13,82 @@
                 <v-row style="padding: 15px 0px">
                   <v-col md="5" justify="center" align="center">
                     <v-hover>
-                      <v-img :src="product.image" ></v-img>
+                      <v-img :src="product.image"></v-img>
                     </v-hover>
                   </v-col>
                   <v-col class="example-0" md="7">
                     <v-card-title>{{ product.name }}</v-card-title>
-                    <v-card-subtitle> {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(product.price)) }} VND</v-card-subtitle>
-                    <div class="example-1" justify="space-around" align="center">
-
-                      <v-btn elevation="2" style="padding-right: 15px" @click="removeToCart(product.id)">
-                          -
+                    <v-card-subtitle>
+                      {{
+                        new Intl.NumberFormat("it-IT", {
+                          style: "currency",
+                          currency: "VND",
+                        }).format(product.price)
+                      }}
+                      VND</v-card-subtitle
+                    >
+                    <div
+                      class="example-1"
+                      justify="space-around"
+                      align="center"
+                    >
+                      <v-btn
+                        elevation="2"
+                        style="padding-right: 15px"
+                        @click="removeToCart(product.id)"
+                      >
+                        -
                       </v-btn>
-                        {{ product.quantity }}
 
-                      <v-btn elevation="2" color="blue" @click="addToCart(product.id)">
-                          + 
+                      <v-btn
+                        elevation="2"
+                        color="pink"
+                        style="padding-right: 15px"
+                        @click="removeFromCart(product.id)"
+                      >
+                        d
+                      </v-btn>
+                      {{ product.quantity }}
+
+                      <v-btn
+                        elevation="2"
+                        color="blue"
+                        @click="addToCart(product.id)"
+                      >
+                        +
                       </v-btn>
                     </div>
 
                     <v-card-actions>
                       <div class="deleter-cart">
-                        <v-btn  elevation="2" color="red"  padding-left="7px" @click="removeAllCart(product.id)">
+                        <v-btn
+                          elevation="2"
+                          color="red"
+                          padding-left="7px"
+                          @click="removeAllCart(product.id)"
+                        >
                           <v-icon left>mdi-delete</v-icon>
                           Bỏ chọn
                         </v-btn>
                       </div>
                     </v-card-actions>
 
-                    <p style="color: red; font-size: 20px; padding-left: 10px; padding-top: 10px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
+                    <p
+                      style="
+                        color: red;
+                        font-size: 20px;
+                        padding-left: 10px;
+                        padding-top: 10px;
+                      "
+                    >
+                      Thanh toán:
+                      {{
+                        new Intl.NumberFormat("it-IT", {
+                          style: "currency",
+                          currency: "VND",
+                        }).format(total)
+                      }}
+                    </p>
                   </v-col>
                 </v-row>
               </v-card>
@@ -58,13 +106,37 @@
             <v-text-field label="Phone" />
             <v-text-field label="Address" />
 
-            <v-btn color="primary"> Checkout </v-btn>
+            <p
+              style="
+                color: red;
+                font-size: 20px;
+                padding-left: 10px;
+                padding-top: 10px;
+              "
+            >
+              Thanh toán:
+              {{
+                new Intl.NumberFormat("it-IT", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(total)
+              }}
+            </p>
+
+            <v-btn color="primary"> Xác Nhận </v-btn>
           </v-card-text>
+          
         </v-card>
       </v-col>
     </v-row>
+
+    
   </div>
+
 </template>
+
+
+
 
 <script>
 import Vue from "vue";
@@ -87,44 +159,49 @@ export default class Carts extends Vue {
     console.log(this.inCart);
   }
 
-  get count(){
-    return this.Cart.reduce((acc, cur) => (acc + cur.quantity),1);
+  get count() {
+    return this.Cart.reduce((acc, cur) => acc + cur.quantity, 1);
   }
 
   get total() {
-    return this.Cart.reduce((acc, cur) => (acc + cur.price*cur.quantity), 0)
+    return this.Cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   }
 
   removeToCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
       if (this.Cart[i].id === id) {
-        if(this.Cart[i].quantity >1) {
-            this.Cart[i].quantity--;
-        }  
+        if (this.Cart[i].quantity > 1) {
+          this.Cart[i].quantity--;
+        }
       }
-    }      
+    }
   }
 
   addToCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
       if (this.Cart[i].id === id) {
-            this.Cart[i].quantity++;
-      } 
-    }      
+        this.Cart[i].quantity++;
+      }
+    }
   }
 
   removeAllCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
-        if (this.Cart[i].id === id) {
-          if(this.Cart[i].quantity >= 1) {
-              this.Cart[i].quantity=1;
-          }     
+      if (this.Cart[i].id === id) {
+        if (this.Cart[i].quantity >= 1) {
+          this.Cart[i].quantity = 1;
         }
       }
     }
   }
-  
 
+  // removeFromCart(id) {
+  //   for (let i = 0; i < this.Cart.length; i++){
+
+  //   }
+  // }
+
+  }
 </script>
 <style lang="sass" scoped>
 .v-card__text
@@ -140,7 +217,7 @@ export default class Carts extends Vue {
   justify-content: space-evenly
   text-align: left
 
-.example-1 
+.example-1
   display: flex
   justify-content: space-around
   align-item: center
@@ -150,9 +227,8 @@ export default class Carts extends Vue {
     min-width: 50px
     font-size: 30px
     font-weight: light
-  
+
 .deleter-cart
   padding-left: 7px
   padding-top: 10px
-
 </style>

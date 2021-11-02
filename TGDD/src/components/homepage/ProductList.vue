@@ -8,7 +8,8 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-snackbar v-model="snackbar" :timeout="timeout">
+
+      <v-snackbar v-model="snackbar" :timeout="timeout" style="padding-top: 50px; display: flex; align-items: flex-start">
                   {{ text }}
                   <template v-slot:action="{ attrs }">
                       <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">Đóng</v-btn>
@@ -116,7 +117,7 @@ export default {
       return {
         snackbar: false,
         text: 'Đã thêm vào giỏ hàng',
-        timeout: 3000,
+        timeout: 1000,
         product: product
       }
     },
@@ -171,7 +172,6 @@ export default {
 .rating-star
   min-height: 0px !important
   display: flex
-  justify-start  
   padding-left: 24px
 
 .text-decoration-line-through 
@@ -217,5 +217,8 @@ export default {
 
 .slide-img:hover
   transform: scale(0.9)
+
+.snackbar
+
 
 </style> 
