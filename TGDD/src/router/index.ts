@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/homepage/Home.vue'
 import Login from '../views/Login.vue'
+import ProductDetail from '../components/homepage/ProductDetail.vue'
+import Search from '../components/homepage/Search.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,16 @@ const routes = [
     path: '/login',
     name: 'Login',
     component:Login
+  },
+  {
+    path: '/product',
+    name: 'ProductDetail',
+    component:ProductDetail
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component:Search
   },
 ]
 

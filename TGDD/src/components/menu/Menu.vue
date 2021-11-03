@@ -6,7 +6,8 @@
       <div class="search">
         <div class="search-wrapper">
           <v-icon small left>mdi-magnify</v-icon>
-          <input type="text" v-model="search" placeholder="Search title.."/>
+          <!-- <input type="text" v-model="search" placeholder="Search title.."/> -->
+          <v-btn to='/search'>Tìm kiếm ở đây</v-btn>
         </div>
         <ul>
           <li v-for="user in filteredAndSorted" :key="user.age">{{user.name}}</li>
@@ -53,58 +54,15 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import Search from '../homepage/Search.vue';
-import Product from '../../product';
 
-@Component({
-  components:{
-    Search
-  }
-})
-
-export default class Menu extends Vue {
-  private product=Product;
-  private drawer = false;
-  item = [
-    { title: "Home", link: "/", icon: "home" },
-    { title: "Store", link: "store", icon: "shopping-basket" },
-    { title: "Cart", link: "cart", icon: "shopping-cart" },
+export default{
+  data(){
+    return {
+    }
+  },
+  method: {
     
-  ];
-
-  get numberCart():number{
-    return this.$store.getters.inCart.length;
   }
-
-  search = '';
-  userList = [
-    {
-      id: 1,
-      name: "Prem"
-    },
-    {
-      id: 1,
-      name: "Chandu"
-    },
-    {
-      id: 1,
-      name: "Shravya"
-    }
-  ];
-
-  filteredAndSorted() {
-      function compare(a: any, b: any) {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
-      }
-      
-      return this.userList.filter(user => {
-        return user.name.toLowerCase().includes(this.search.toLowerCase())
-      }).sort(compare)
-    }
 }
 
 </script>
