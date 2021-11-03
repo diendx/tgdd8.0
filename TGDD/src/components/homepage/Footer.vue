@@ -49,20 +49,30 @@ export default {
 
 </script>
 
-<style lang="sass" scoped>
-.v-footer
+<style lang="css" scoped>
+.v-footer {
   margin-top: 25px
-
-.v-card 
-  margin: 0 auto
-  width: 100%
-
-.yellow
+}
+.v-card { 
+  margin: 0 auto;
+  width: 100%;
+}
+.yellow {
   background: #ffeb3b !important
+}
+.black--text { 
+  width: 1300px;
+  margin: 0 auto;
+}
 
-.black--text 
-  width: 1300px
-  margin: 0 auto
+@media screen and (max-width: 768px) {
+  .mx-auto {
+    max-width: 100% !important;
+  }  
+  .black--text {
+    max-width: 100%;
+  }
 
 
+  }
 </style>

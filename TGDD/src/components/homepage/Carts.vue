@@ -40,14 +40,6 @@
                         -
                       </v-btn>
 
-                      <v-btn
-                        elevation="2"
-                        color="pink"
-                        style="padding-right: 15px"
-                        @click="removeFromCart(product.id)"
-                      >
-                        d
-                      </v-btn>
                       {{ product.quantity }}
 
                       <v-btn
@@ -231,4 +223,6 @@ export default class Carts extends Vue {
 .deleter-cart
   padding-left: 7px
   padding-top: 10px
+
+  
 </style>

@@ -2,20 +2,23 @@
   <v-container>
     <v-row>
       <v-col md="8">
-        <v-carousel cycle height="435" width="850">
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-            <v-row class="fill-height title" align="center" justify="center">
-              <div> {{ item.title }} </div>
-            </v-row>
-          </v-carousel-item>
+        <div class="slide-top">
+          <v-carousel height="435" width="850"> <!-- để cái dưới, xóa cái này -->
+            <!-- <v-carousel cycle height="435" width="850"> -->
+            <v-carousel-item
+              v-for="(item, i) in items"
+              :key="i"
+              :src="item.src"
+              reverse-transition="fade-transition"
+              transition="fade-transition"
+            >
+              <v-row class="fill-height title" align="center" justify="center">
+                <div> {{ item.title }} </div>
+              </v-row>
+            </v-carousel-item>
 
-        </v-carousel>
+          </v-carousel>
+        </div>
       </v-col>
       <v-col md="4" style="padding: 12px 0px 12px 12px"> 
 
@@ -98,14 +101,22 @@ export default class Header extends Vue {
 
 }
 </script>
-<style lang="sass" scoped>
-.container
-  max-width: 1300px
-  padding: 12px 12px 12px 0
-  background-size: auto 
-  background-repeat: no-repeat
+<style lang="css" scoped>
+.container {
+  max-width: 1300px;
+  padding: 12px 12px 12px 0;
+  background-size: auto;
+  background-repeat: no-repeat;
+  }
   
+@media screen and (max-width: 768px) {
+.v-navigation-drawer {
+  display: none !important;
+  border: 1px solid red;
+}
 
+
+}
 
 
 </style>

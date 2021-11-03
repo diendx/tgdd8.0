@@ -9,13 +9,13 @@
     </v-row>
     <v-row>
 
-      <v-snackbar v-model="snackbar" :timeout="timeout" style="padding-top: 50px; display: flex; align-items: flex-start">
+      <v-snackbar v-model="snackbar" :timeout="timeout" style="padding-top: 50px; display: flex; align-items: flex-start; border: 2px solid red; max-width: 50%">
                   {{ text }}
                   <template v-slot:action="{ attrs }">
                       <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">Đóng</v-btn>
                   </template>
       </v-snackbar>
-      <v-sheet class="mx-auto" elevation="8" max-width="1300">
+      <v-sheet class="mx-auto" elevation="8" max-width="1300px">
         <p class="title">SĂN SALE ONLINE MỖI NGÀY</p>
         <v-slide-group class="pa-4" multiple show-arrows style="padding-top: 0px !important">
           <v-slide-item
@@ -130,95 +130,108 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.v-card.on-hover.theme--dark
+<style lang="css" scoped>
+.v-card.on-hover.theme--dark {
   background-color: rgba(#FFF, 0.8)
+}
 
->.v-card__text
+.v-card__text {
   color: #000
-  
-.banner
+}
+
+.banner {
   max-width: 1325px
-
-.banner-top
+}
+.banner-top {
   max-width: 1325px
+}
+.title {
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 30px;
+  padding: 0 0 0 40px;
+  margin: 0;
+  background: #fed100;
+}
 
-.title
-  color: #000
-  font-size: 30px
-  font-weight: bold
-  font-style: italic
-  line-height: 30px
-  padding: 0 0 0 40px
-  margin: 0
+.v-slide-group {
   background: #fed100
+}
 
-.v-slide-group
-  background: #fed100
-
-.v-sheet
+.v-sheet {
   border-radius: 5px
-
-.mx-auto
-  .title 
-    padding-top: 20px
+}
+.mx-auto .title {
+    padding-top: 20px;
     padding-left: 80px
+}
+.v-card-actions{
+  display: flex;
+  justify-center: center;
+  align-items: center;
+}
+.rating-star {
+  min-height: 0px !important;
+  display: flex;
+  padding-left: 24px;
+}
+.text-decoration-line-through {
+  font-size: 12px;
+  padding-left: 25px;
+}
 
-.v-card-actions
-  display: flex
-  justify-center: center
-  align-items: center
-
-.rating-star
-  min-height: 0px !important
-  display: flex
-  padding-left: 24px
-
-.text-decoration-line-through 
-  font-size: 12px
-  padding-left: 25px
-
-.v-card__subtitle  
+.v-card__subtitle { 
   padding: 0px 25px
+}
 
-.v-card__title 
-  padding-bottom: 16px
+.v-card__title  {
+  padding-bottom: 16px;
   padding-left: 25px
+}
 
-.v-card__actions
-  display: flex
-  margin-left: 5px
+.v-card__actions {
+  display: flex;
+  margin-left: 5px;
+}
 
-.img-background 
-  width: 90%
-  margin: 0 auto
-  background-size: contain
-  margin-top: 25px
-  display: block
-  transition: all 0.3s ease-in-out
-
-.img-background:hover 
+.img-background {
+  width: 90%;
+  margin: 0 auto;
+  background-size: contain;
+  margin-top: 25px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.img-background:hover {
   transform: scale(1.1)
-
-.btn2
-  display: flex
-  justify-content: flex-start
-  padding-left: 25px
-
-.ma-4
+}
+.btn2 {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 25px;
+}
+.ma-4 {
   margin-left: 0 !important
-
-.slide-img 
-  width: 100%
-  margin: 0 auto
-  background-size: contain, cover
-  display: block
-  transition: all 0.3s ease-in-out
-
-.slide-img:hover
+}
+.slide-img {
+  width: 100%;
+  margin: 0 auto;
+  background-size: contain, cover;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.slide-img:hover{
   transform: scale(0.9)
+}
 
-.snackbar
+@media screen and (max-width: 768px) {
+  .mx-auto {
+    max-width: 100% !important;
+  }  
 
+
+  }
 
 </style> 
