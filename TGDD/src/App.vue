@@ -10,14 +10,16 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import Menu from "./components/menu/Menu.vue";
-import Login from './views/Login.vue'
-import Edit from './components/homepage/EditProduct.vue'
+import Login from './views/Login.vue';
+import Edit from './components/homepage/EditProduct.vue';
+import Search from './components/homepage/Search.vue'
 
 @Component({
   components: {
     Menu,
     Login,
-    Edit
+    Edit, 
+    Search,
     
   },
 })

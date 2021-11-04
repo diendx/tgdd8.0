@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col md="8">
-        <v-carousel cycle height="435" width="850">
+        <v-carousel cycle height="435" width="850" style=" border: 1px solid #848285">
           <v-carousel-item
             v-for="(item, i) in items"
             :key="i"

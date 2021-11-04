@@ -9,7 +9,7 @@
     </v-row>
     <v-row>
 
-      <v-snackbar v-model="snackbar" :timeout="timeout" style="padding-top: 50px; display: flex; align-items: flex-start; border: 2px solid red; max-width: 50%">
+      <v-snackbar v-model="snackbar" :timeout="timeout" style="padding-top: 50px; display: flex; align-items: flex-start; max-width: 100%">
                   {{ text }}
                   <template v-slot:action="{ attrs }">
                       <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">Đóng</v-btn>
@@ -43,7 +43,7 @@
                   <div class="btn1">
                     <v-btn outlined @click="addToCart(product.id)">
                       <v-icon left small>fa-plus</v-icon>
-                      muc
+                      mua
                     </v-btn>
                   </div>
                   <v-btn v-if="editProduc === 'email'" outlined @click="editProduc(product.id)">
@@ -77,13 +77,6 @@
         </v-card>
       </v-col>
     </v-row>
-              <v-text-field
-                v-model="search"
-                append-icon="mdi-magnify"
-                label="Search"
-                single-line
-                hide-details
-              ></v-text-field>
 
     <v-row class="mx-auto banner">
       <v-col md="3" v-for="product of product" :key="product">
@@ -102,7 +95,7 @@
                 dense
                 half-increments
                 readonly
-                size="14"
+                size="16"
               ></v-rating>
             </div>
           </div>
@@ -128,13 +121,7 @@ export default {
         product: product,
       }
     },
-    computed: {
-      filteredList() {
-        return this.product.filter((product: { name: string }) => {
-          return product.name.toLowerCase().includes(this.search.toLowerCase())
-          })
-        }
-    },
+
     methods: {
         addToCart(id:any) {
           this.$store.dispatch('addToCart',id)

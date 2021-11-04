@@ -3,16 +3,14 @@
     <v-app-bar style="background:#fed100" >
       <v-toolbar-title style="padding-left: 170px">THE GIOI DI DONG</v-toolbar-title>
 
-      <div class="search">
+      <!-- <div class="search">
         <div class="search-wrapper">
-          <v-icon small left>mdi-magnify</v-icon>
-          <!-- <input type="text" v-model="search" placeholder="Search title.."/> -->
           <v-btn to='/search'>Tìm kiếm ở đây</v-btn>
         </div>
         <ul>
           <li v-for="user in filteredAndSorted" :key="user.age">{{user.name}}</li>
         </ul> 
-      </div>
+      </div> -->
       <v-spacer> </v-spacer>
 
       <v-toolbar-items class="hidden-xs-only">

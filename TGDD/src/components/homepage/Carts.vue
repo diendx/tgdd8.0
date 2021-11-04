@@ -40,7 +40,6 @@
                       </div>
                     </v-card-actions>
 
-                    <p style="color: red; font-size: 20px; padding-left: 10px; padding-top: 10px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
                   </v-col>
                 </v-row>
               </v-card>
@@ -50,7 +49,7 @@
       </v-col>
       <v-col md="5">
         <v-card outlined>
-          <v-card-title>Payment Details</v-card-title>
+          <v-card-title> Xác nhận đơn hàng</v-card-title>
 
           <v-card-text>
             <v-text-field label="Name" />
@@ -58,9 +57,41 @@
             <v-text-field label="Phone" />
             <v-text-field label="Address" />
 
-            <v-btn color="primary"> Checkout </v-btn>
+          <p style="color: red; font-size: 20px; padding-left: 10px; padding-top: 10px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
+          <!-- <v-btn color="primary"> Đặt hàng </v-btn> -->
+          <div>
+    <v-alert
+      v-model="alert"
+      border="left"
+      close-text="Close Alert"
+      color="deep-purple accent-4"
+      dark
+      dismissible
+    >
+      Sản phẩm của bạn đã được đặt hàng thành công.  Trong 15 phút, nhân viên Thế Giới Di Động sẽ gọi điện hoặc gửi tin nhắn xác nhận đặt hàng tại siêu thị cho bạn.
+    </v-alert>
+    <div class="text-center">
+      <v-btn
+        v-if="!alert"
+        color="deep-purple accent-4"
+        dark
+        @click="alert = true"
+      >
+        Đặt hàng
+      </v-btn>
+    </div>
+  </div>
+
           </v-card-text>
         </v-card>
+
+          <v-snackbar v-model="snackbar" :timeout="timeout" style="padding-top: 50px; display: flex; align-items: flex-start; max-width: 100%">
+              {{ text }}
+              <template v-slot:action="{ attrs }">
+                  <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">Đóng</v-btn>
+              </template>
+          </v-snackbar>
+
       </v-col>
     </v-row>
   </div>
@@ -116,12 +147,19 @@ export default class Carts extends Vue {
   removeAllCart(id) {
     for (let i = 0; i < this.Cart.length; i++) {
         if (this.Cart[i].id === id) {
-          if(this.Cart[i].quantity >= 1) {
-              this.Cart[i].quantity=1;
+          if(this.Cart[i].quantity >= 0) {
+              this.Cart[i].quantity=0;
           }     
         }
       }
     }
+    data () {
+      return {
+        alert: false,
+      }
+    }
+  
+
   }
   
 
