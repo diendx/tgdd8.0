@@ -33,7 +33,7 @@
                 solo-inverted
                 hide-details
                 :items="keys"
-                prepend-inner-icon="mdi-magnify"
+                prepend-inner-icon="mdi-filter"
                 label="Sort by"
               ></v-select>
               <v-spacer></v-spacer>

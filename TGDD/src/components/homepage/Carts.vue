@@ -58,7 +58,6 @@
             <v-text-field label="Address" />
 
           <p style="color: red; font-size: 20px; padding-left: 10px; padding-top: 10px">Thanh toán: {{ (new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(total)) }}</p>
-          <!-- <v-btn color="primary"> Đặt hàng </v-btn> -->
           <div>
     <v-alert
       v-model="alert"
@@ -94,6 +93,8 @@
 
       </v-col>
     </v-row>
+
+    
   </div>
 </template>
 
@@ -148,7 +149,7 @@ export default class Carts extends Vue {
     for (let i = 0; i < this.Cart.length; i++) {
         if (this.Cart[i].id === id) {
           if(this.Cart[i].quantity >= 0) {
-              this.Cart[i].quantity=0;
+              this.Cart[i].quantity= 0;
           }     
         }
       }

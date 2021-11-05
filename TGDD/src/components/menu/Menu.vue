@@ -2,15 +2,6 @@
   <div>
     <v-app-bar style="background:#fed100" >
       <v-toolbar-title style="padding-left: 170px">THE GIOI DI DONG</v-toolbar-title>
-
-      <!-- <div class="search">
-        <div class="search-wrapper">
-          <v-btn to='/search'>Tìm kiếm ở đây</v-btn>
-        </div>
-        <ul>
-          <li v-for="user in filteredAndSorted" :key="user.age">{{user.name}}</li>
-        </ul> 
-      </div> -->
       <v-spacer> </v-spacer>
 
       <v-toolbar-items class="hidden-xs-only">
@@ -64,15 +55,15 @@ export default{
 }
 
 </script>
-<style lang="sass" scoped>
-.v-spacer 
+<style lang="css" scoped>
+.v-spacer {
   border: 1px solid red
-
-.filter
+}
+.filter {
   padding: 20px 0 0 20px
-
-.search
+}
+.search {
   padding-left: 30px  
-
+}
 </style>
 
